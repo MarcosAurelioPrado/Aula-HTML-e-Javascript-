@@ -1,0 +1,81 @@
+<meta charset="UTF-8">
+
+
+<br><br><br><br><br><br>
+<center> 
+	<h1>Meu primeiro programa espero que goste!</h1>
+	<h1>Para não ficar muito  difícil está a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z</h1>
+    <input/>
+    <br>
+    <button>Descubra qual é a letra do alfabeto</button>
+</center>
+
+<script>
+    var tentativas = 3; // Número de tentativas
+    function sorteia() {
+        var alfabeto = ["a", "b", "c","d","e", "f", "g"," h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+        return alfabeto[Math.floor(Math.random() * alfabeto.length)];
+    }
+
+    function sorteiaAlfabetos(quantidade) {
+        var segredos = [];
+        var numero = 0;
+
+        while(numero < quantidade) {
+            var sorteiaAlfabetos = sorteia();
+            if (!segredos.includes(sorteiaAlfabetos)) {
+                segredos.push(sorteiaAlfabetos);
+                numero++;
+                
+            }
+        }
+
+        return segredos;
+    }
+
+    var segredos = sorteiaAlfabetos(3);
+
+    console.log(segredos);
+
+    var input = document.querySelector("input");
+    input.focus();
+
+    function verifica() {
+        var achou = false;
+        for(var posicao = 0; posicao < segredos.length; posicao++) {
+            if(input.value == segredos[posicao]) {
+                alert("Você ACERTOU!");
+                achou = true;
+                segredos = sorteiaAlfabetos(3);
+                console.log(segredos);
+                break;
+            } 
+        }
+         if(achou == false) {
+            tentativas--; // Reduz o número de tentativas ao errar
+            alert("Você ERROU! Tentativas restantes: " + tentativas);
+            if(tentativas === 0) { // Quando acabarem as tentativas
+                alert("FIM DE JOGO!!! Você perdeu!");
+                segredos = sorteiaAlfabetos(3); // Reinicia o jogo
+                tentativas = 3; // Reinicia o número de tentativas
+            }
+        }
+
+        input.value = "";
+        input.focus();
+
+    }
+       
+
+
+        var button = document.querySelector("button");
+        button.onclick = verifica;
+
+
+
+</script>
+
+
+<h1>Entre no meu perfil Linkedin para me conhecer mais! </h1>
+
+Descubra visitando o meu Linkedin! <a href="http://www.linkedin.com/in/marcosaurelioprado">aqui</a>!
